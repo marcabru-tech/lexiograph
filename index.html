@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lexiograph — Design como Linguagem Viva</title>
     <meta name="description" content="Lexiograph — Design que une tradição, cultura e tecnologia.">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto+Slab&family=Archivo+Black&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Playfair+Display:wght@700&family=Roboto+Slab&display=swap" rel="stylesheet">
     <style>
         :root {
             --ciano: #00bcd4;
@@ -20,6 +20,10 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--preto);
             color: var(--laranja);
@@ -28,6 +32,7 @@
             padding: 40px 20px;
             max-width: 1000px;
             margin: auto;
+            transition: all 0.4s ease;
         }
 
         header {
@@ -37,10 +42,15 @@
 
         header h1 {
             color: var(--ciano);
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 3.5rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.8rem;
             margin-bottom: 10px;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            transition: color 0.3s;
+        }
+
+        header h1:hover {
+            color: var(--branco);
         }
 
         header h2 {
@@ -50,8 +60,33 @@
             font-family: 'Playfair Display', serif;
         }
 
+        nav {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        nav button {
+            background-color: var(--ciano);
+            border: none;
+            color: var(--preto);
+            padding: 8px 16px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        nav button:hover {
+            background-color: var(--laranja);
+            color: var(--branco);
+        }
+
         section {
             margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards;
         }
 
         h3 {
@@ -65,6 +100,7 @@
             color: var(--ciano);
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.3s;
         }
 
         a:hover {
@@ -92,77 +128,103 @@
         strong {
             color: var(--branco);
         }
+
+        /* WhatsApp button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <header>
         <h1>Lexiograph</h1>
-        <h2>Design como Linguagem Viva</h2>
+        <h2 id="subTitle">Design como Linguagem Viva</h2>
     </header>
 
-    <section>
+    <nav>
+        <button onclick="setLanguage('pt')">PT</button>
+        <button onclick="setLanguage('en')">EN</button>
+    </nav>
+
+    <section id="about">
         <h3>Sobre Mim</h3>
         <p>
             <strong>Guilherme Gonçalves Machado</strong> — <span class="highlight">CEO & Founder</span> da <strong>Lexiograph</strong>.  
-            Sou <strong>CEO hands-on</strong>, indie maker, autodidata e praticante de <span class="highlight">long life learning</span> — aprendendo de forma contínua, multidisciplinar e independente.  
-            Atuo como especialista em marketing multilíngue, com experiência em <strong>copywriting, SEO, inteligência artificial aplicada, design e comunicação digital</strong>.  
+            Sou <strong>CEO hands-on</strong>, indie maker, autodidata e praticante de <span class="highlight">long life learning</span>.  
             Minha trajetória une tecnologia, criatividade, estratégia e linguagem — construindo narrativas de impacto e soluções visuais para mercados globais.
         </p>
     </section>
 
-    <section>
+    <section id="manifesto">
         <h3>Manifesto</h3>
         <p>
-            Vivemos em um tempo em que as ferramentas digitais parecem carregar toda a magia da criação. Um clique aqui, uma curva vetorial ali, e o design se concretiza nas telas. Mas para quem, como eu, vem da <span class="highlight">Geração X</span> — e carrega uma bagagem cultural construída entre livros, discos, revistas, poesia concreta e publicidade de vanguarda —, cada ferramenta digital conta uma história que começou muito antes do digital existir.
+            Vivemos em um tempo onde ferramentas digitais parecem carregar toda a magia da criação. Mas para quem, como eu, vem da <span class="highlight">Geração X</span>, cada ferramenta digital conta uma história que começou muito antes do digital.
         </p>
     </section>
 
-    <section>
-        <h3>Ecossistema de Serviços</h3>
+    <section id="poesia">
+        <h3>Design, Poesia Concreta e Cultura Visual</h3>
         <p>
-            A <strong>Lexiograph</strong> oferece soluções completas e integradas em design e comunicação visual, combinando tradição, cultura e tecnologia.
+            Quando comecei a explorar o <strong>Adobe Illustrator</strong>, me chamou atenção a função <strong>"Expandir Aparência"</strong>, que transforma texto em vetores manipuláveis.  
+            Essa experiência é herdeira da <strong>Poesia Concreta</strong> dos anos 50, liderada por <strong>Décio Pignatari, Augusto e Haroldo de Campos</strong>, onde a palavra deixa de ser só texto para virar imagem, espaço e conceito.  
+            Na <strong>Lexiograph</strong>, essa herança não é só referência — é método, cultura e DNA.
         </p>
+    </section>
 
+    <section id="services">
+        <h3>Ecossistema de Serviços</h3>
         <ul>
-            <li>
-                <strong>1. Comunicação Visual & Design:</strong> Branding, identidade visual, design editorial, tipografia, sinalização e materiais promocionais. Ferramentas: Adobe Illustrator, InDesign, Photoshop e Canva.
-            </li>
-            <li>
-                <strong>2. Artes Visuais e Design Digital:</strong> Ilustração, manipulação de imagens, design para mídias sociais e design interativo. Ferramentas: Procreate, Photoshop, Figma e Sketch.
-            </li>
-            <li>
-                <strong>3. Game Art & Design:</strong> Desenvolvimento de personagens, ambientes, storyboards e experiências imersivas (AR/VR) com Unity e Unreal Engine.
-            </li>
-            <li>
-                <strong>4. Motion Design e Animação:</strong> Animações 2D/3D, videografismo, storytelling visual, produção audiovisual com After Effects, Blender, Premiere Pro e Final Cut Pro.
-            </li>
-            <li>
-                <strong>5. Design Web & Desenvolvimento Digital:</strong> Criação de sites, landing pages, aplicativos e e-commerce. Ferramentas: WordPress, Webflow, Shopify.
-            </li>
-            <li>
-                <strong>6. Consultoria Criativa:</strong> Estratégias de design, branding, inovação e marketing com metodologias como Design Thinking.
-            </li>
-            <li>
-                <strong>7. Impressão e Produção Gráfica:</strong> Pré-impressão, prototipagem, produção física e gráfica. Ferramentas: CorelDRAW, impressão digital e offset.
-            </li>
-            <li>
-                <strong>8. SEO Visual e Copywriting:</strong> Otimização gráfica e textual para presença digital, aplicando SEO e ferramentas como Google Analytics.
-            </li>
+            <li><strong>1. Comunicação Visual & Design:</strong> Branding, identidade, tipografia, editorial, publicidade.</li>
+            <li><strong>2. Design Digital:</strong> Ilustração, social media, UX/UI.</li>
+            <li><strong>3. Game Art & AR/VR:</strong> Personagens, cenários, experiências imersivas.</li>
+            <li><strong>4. Motion Design:</strong> Animações 2D/3D, storytelling visual, vídeos.</li>
+            <li><strong>5. Design Web:</strong> Websites, landing pages, e-commerce.</li>
+            <li><strong>6. Consultoria Criativa:</strong> Estratégias de design e inovação.</li>
+            <li><strong>7. Produção Gráfica:</strong> Impressão, pré-impressão, mockups físicos.</li>
+            <li><strong>8. SEO Visual & Copywriting:</strong> Conteúdo otimizado e design para performance digital.</li>
         </ul>
     </section>
 
-    <section>
+    <section id="filosofia">
         <h3>Filosofia de Design</h3>
         <p>
-            Aqui, o design é mais do que estética. É <span class="highlight">linguagem viva</span>. É cultura, é tecnologia, é semiótica aplicada. Um design que respeita o passado, domina o presente e dialoga com o futuro.
+            Aqui, o design é mais do que estética. É <span class="highlight">linguagem viva</span>. É cultura, tecnologia, semiótica aplicada. Um design que respeita o passado, domina o presente e dialoga com o futuro.
         </p>
     </section>
 
-    <section>
+    <section id="portfolio">
         <h3>Portfólio</h3>
         <p>
-            Confira nossos projetos e cases no Behance:<br>
+            Confira nossos projetos no Behance:<br>
             <a href="https://www.behance.net/lexiograph/" target="_blank">https://www.behance.net/lexiograph/</a>
         </p>
     </section>
@@ -171,6 +233,41 @@
         &copy; 2025 Lexiograph — Guilherme Gonçalves Machado<br>
         CEO & Founder — Design como Linguagem Viva
     </footer>
+
+    <a href="https://wa.me/5511994555772" class="whatsapp-float" target="_blank" title="Fale no WhatsApp">
+        🟢
+    </a>
+
+    <script>
+        const translations = {
+            pt: {
+                subTitle: "Design como Linguagem Viva",
+                about: "Sobre Mim",
+                manifesto: "Manifesto",
+                poesia: "Design, Poesia Concreta e Cultura Visual",
+                services: "Ecossistema de Serviços",
+                filosofia: "Filosofia de Design",
+                portfolio: "Portfólio"
+            },
+            en: {
+                subTitle: "Design as Living Language",
+                about: "About Me",
+                manifesto: "Manifesto",
+                poesia: "Design, Concrete Poetry & Visual Culture",
+                services: "Service Ecosystem",
+                filosofia: "Design Philosophy",
+                portfolio: "Portfolio"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.getElementById('subTitle').innerText = translations[lang].subTitle;
+            document.querySelectorAll('section h3').forEach((el, index) => {
+                const keys = ['about', 'manifesto', 'poesia', 'services', 'filosofia', 'portfolio'];
+                el.innerText = translations[lang][keys[index]];
+            });
+        }
+    </script>
 
 </body>
 </html>
